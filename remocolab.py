@@ -173,12 +173,12 @@ def _setupSSHDImpl(ngrok_token, ngrok_region, is_VNC):
   port = m.group(2)
 
   msg += "---\n"
-    msg += "Connect to ssh server:\n"
-    msg += "="*24 + "\n"
-    msg += f"ssh -p {port} root@{hostname}\n"
-    msg += "Proxy via ssh server:\n"
-    msg += f"sshuttle -r root@{hostname} 0/0"
-    msg += "="*24 + "\n"
+  msg += "Connect to ssh server:\n"
+  msg += "="*24 + "\n"
+  msg += f"ssh -p {port} root@{hostname}\n"
+  msg += "Proxy via ssh server:\n"
+  msg += f"sshuttle -r root@{hostname} 0/0"
+  msg += "="*24 + "\n"
   return msg
 
 def _setupSSHDMain(ngrok_region, check_gpu_available, is_VNC):
