@@ -177,7 +177,7 @@ def _setupSSHDImpl(ngrok_token, ngrok_region, is_VNC):
   msg += "="*24 + "\n"
   msg += f"ssh -p {port} root@{hostname}\n"
   msg += "Proxy via ssh server:\n"
-  msg += f"sshuttle -r root@{hostname} 0/0"
+  msg += f"sshuttle -r root@{hostname}:{port} 0/0\n"
   msg += "="*24 + "\n"
   return msg
 
