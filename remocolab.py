@@ -172,17 +172,13 @@ def _setupSSHDImpl(ngrok_token, ngrok_region, is_VNC):
   hostname = m.group(1)
   port = m.group(2)
 
-  ssh_common_options =  "-o UserKnownHostsFile=/dev/null -o VisualHostKey=yes"
   msg += "---\n"
-  if is_VNC:
-    msg += "Execute following command on your local machine and login before running TurboVNC viewer:\n"
-    msg += "✂️"*24 + "\n"
-    msg += f"ssh {ssh_common_options} -L 5901:localhost:5901 -p {port} {user_name}@{hostname}\n"
-  else:
-    msg += "Command to connect to the ssh server:\n"
-    msg += "✂️"*24 + "\n"
-    msg += f"ssh {ssh_common_options} -p {port} {user_name}@{hostname}\n"
-    msg += "✂️"*24 + "\n"
+    msg += "Connect to ssh server:\n"
+    msg += "="*24 + "\n"
+    msg += f"ssh -p {port} {user_name}@{hostname}\n"
+    msg += "Connect to ssh server:\n"
+    msg += "sshuttle -r {user_name}@{hostname} 0/0"
+    msg += "="*24 + "\n"
   return msg
 
 def _setupSSHDMain(ngrok_region, check_gpu_available, is_VNC):
